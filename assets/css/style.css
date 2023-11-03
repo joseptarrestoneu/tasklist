@@ -95,26 +95,48 @@ h1 {
   overflow-x: auto;
 }
 
+.main .header {
+  display: flex;
+  flex-direction: column;
+}
+
 .main .button-group {
   padding: 0;
-  height: 40px;
   font-family: 'Lato', sans-serif;
 }
 
-.main form {
+.main .button-group .button {
   width: 100%;
+  height: 40px;
+  background-color: #0B6EFD;
+  color: white;
+}
+
+.main .button-group .button:hover {
+  background-color: #1553aa;
+}
+
+.main .button-group .button:last-child {
+  border-bottom-right-radius: .3rem;
+  border-bottom-left-radius: .3rem;
+}
+
+.main .button-group .button:first-child {
+  border-top-left-radius: .3rem;
+  border-top-right-radius: .3rem;
 }
 
 .main label div {
   display: flex;
+  min-height: 40px;
   justify-content: center;
   align-items: center;
   padding: .5em;
   background-color: #0B6EFD;
   color: white;
-  font-size: 1.1rem;
+  font-size: .9rem;
   border-bottom-right-radius: .3rem;
-  border-top-right-radius: .3rem;
+  border-bottom-left-radius: .3rem;
 }
 
 .main label div:hover {
@@ -130,8 +152,8 @@ h1 {
 }
 
 .main input {
-  display: block;
-  min-height: 60px;
+  width: 100%;
+  min-height: 40px;
   background-color: #bee5e3;
   padding: .5em;
   font-size: 1.1em;
@@ -143,7 +165,7 @@ h1 {
 }
 
 .main input:first-child {
-  border-bottom-left-radius: .3rem;
+  border-top-right-radius: .3rem;
   border-top-left-radius: .3rem;
 }
 
@@ -223,10 +245,15 @@ h1 {
   position: relative;
 }
 
-.main thead th:nth-child(1),
-.main thead th:nth-child(2),
-.main thead th:nth-child(3) {
+.main thead th:nth-child(1) {
   padding-left: 40px;
+}
+
+.main thead th:nth-child(2),
+.main thead th:nth-child(3),
+.main thead th:nth-child(4),
+.main thead th:nth-child(5) {
+  display: none;
 }
 
 .main thead i {
@@ -249,22 +276,15 @@ h1 {
   color: white;
   padding: .5em;
   font-weight: 400;
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-transform: capitalize;
-}
-
-.main th:first-child {
-  border-top-left-radius: .3rem;
-}
-
-.main th:last-child {
-  border-top-right-radius: .3rem;
 }
 
 .main td {
   font-family: 'Fredoka', sans-serif;
   padding: .8em;
   display: flex;
+  justify-content: center;
   align-items: center;
   color: black
 }
@@ -274,15 +294,23 @@ h1 {
 .main td:nth-child(3) {
   font-size: 1.1em;
 }
-.main td:nth-child(2),
-.main td:nth-child(3) {
-  justify-content: center;
+
+.main th:first-child {
+  border-top-left-radius: .3rem;
+  border-top-right-radius: .3rem;
 }
 
-.main td:nth-child(4), 
-.main td:nth-child(5) {
-  font-size: 1.1rem;
-  justify-content: center;
+.main tr:last-child {
+  border-bottom-right-radius: .3rem;
+  border-bottom-left-radius: .3rem;
+}
+
+.main td:last-child {
+  border-bottom-left-radius: .3rem;
+}
+
+.main th:last-child {
+  border-top-right-radius: .3rem;
 }
 
 .main table .fa-2x {
@@ -341,7 +369,6 @@ footer {
   bottom: 0;
   width: 100%;
   padding: 2rem 30px;
-  position: fixed;
   display: flex;
   justify-content: center;
   font-size: 0.9em;
@@ -353,18 +380,136 @@ footer a {
 
   /* Bostrap breackpoints */
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) { 
-  /* here your code */  
+@media (min-width: 760px) { 
+  .main .button-group .button {
+      width: 33%;
+  }
+
+  .main .button-group {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .main .button-group .button:last-child {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .main .button-group .button:first-child {
+    border-top-left-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .main label {
+    display: flex;
+  }
+
+  .main label div {
+    flex-basis: 10%;
+  }
+
+  .main label div {
+    border-bottom-right-radius: .3rem;
+    border-top-right-radius: .3rem;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  .main input {
+    min-height: 60px;
+  }
+
+  .main input:nth-child(1) {
+    flex-basis: 60%;
+  }
+  .main input:nth-child(2) {
+    flex-basis: 20%;
+  }
+  .main input:nth-child(3) {
+    flex-basis: 20%;
+  }
+
+  .main input:first-child {
+    border-bottom-left-radius: .3rem;
+    border-top-left-radius: .3rem;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .main thead {
+    display: flex;
+    width: 100%;
+  }
+
+  .main thead tr {
+    display: flex;
+    width: 100%;
+  }
+
+  .main th:first-child {
+    border-top-left-radius: .3rem;
+  }
+  
+  .main tbody td:last-child {
+    border-top-right-radius: .3rem;
+  }
+
+  .main thead th:nth-child(1) {
+    flex-basis: 80%;
+    padding-left: 40px;
+  }
+
+  .main thead th:nth-child(2),
+  .main thead th:nth-child(3) {
+    display: inherit;
+    flex-basis: 15%;
+    padding-left: 40px;
+  }
+
+  .main thead th:nth-child(4),
+  .main thead th:nth-child(5) {
+    display: inherit;
+    flex-basis: 8%;
+  }
+
+  .main tbody tr {
+    display: flex;
+  }
+
+  .main tbody td:nth-child(1) {
+    flex-basis: 80%;
+  }
+
+  .main td:nth-child(2),
+  .main td:nth-child(3) {
+    justify-content: center;
+    flex-basis: 15%;
+  }
+
+  .main tbody td:nth-child(4), 
+  .main tbody td:nth-child(5) {
+    font-size: 1.1rem;
+    justify-content: center;
+    flex-basis: 5%;
+  }
+
 }
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-  
-}
-
-/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  /* here your code */  
+  .main .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .main .button-group .button {
+    width: 100px;
+  }
+
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
@@ -374,5 +519,5 @@ footer a {
 
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {
-  /* here your code */  
+
 }
