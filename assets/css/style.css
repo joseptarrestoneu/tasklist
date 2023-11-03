@@ -337,6 +337,20 @@ h1 {
   display: none;
 }
 
+footer {
+  bottom: 0;
+  width: 100%;
+  padding: 2rem 30px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  font-size: 0.9em;
+}
+
+footer a {
+  text-decoration: none;
+}
+
   /* Bostrap breackpoints */
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
