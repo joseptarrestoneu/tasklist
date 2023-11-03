@@ -137,24 +137,24 @@ window.addEventListener("load", () => {
 // Funcion para generar una nueva fila (nueva nota) => refactoración
 const generateRow = (id, text, date1, date2) => {
     //Opcion 1
-    let newRow = `<tr id=${id} class="row task-file">
-        <td class="col">
+    let newRow = `<tr id=${id} class="task-file">
+        <td>
             <i class="fa-solid fa-circle-check fa-2x"></i>
             <span class="task" contenteditable="true" data-completed="false">${text}</span>
         </td>
-        <td class="col-2">
+        <td>
             <span class="task" contenteditable="true" data-completed="false">${date1}</span>
         </td>
-        <td class="col-2">
+        <td>
             <span class="task" contenteditable="true" data-completed="false">${date2}</span>
         </td>
-        <td class="col-1 text-center">
+        <td>
             <span class="fa-stack fa-2x">
                 <i class="fa-solid fa-square fa-stack-2x"></i>
                 <i class="fa-solid fa-pencil fa-stack-1x fa-inverse"></i>
             </span>
         </td>
-        <td class="col-1 text-center">
+        <td>
             <span class="fa-stack fa-2x">
                 <i class="fa-solid fa-square fa-stack-2x"></i>
                 <i class="fa-solid fa-trash fa-stack-1x fa-inverse"></i>
