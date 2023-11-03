@@ -1,0 +1,364 @@
+:root {
+  font-size: 0.785;
+  --black: #000;
+  --blue: #0d6ef2;
+  --cyan: #0dcaf0;
+  --green: #198754;
+  --indigo: #6610f2;
+  --orange: #fd7e14;
+  --puerple: #6f42c1;
+  --pink: #d63384;
+  --red: #dc3545;
+  --teal: #20c997;
+  --yellow: #ffc107;
+  --white: #fff;
+  --day: #FFBF00;
+  --night: #298662;
+  box-sizing: border-box;
+  outline: 0 none; /* És un tipus de border per sobre dels borders */
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+  background-color: #c9d6ff;
+  background-image: linear-gradient(to right, #e2e2e2, #c9d6ff);
+}
+
+h1 {
+  font-family: 'Smooch Sans', sans-serif;
+  font-size: 3.9rem;
+}
+
+.dark-mode {
+  background-color: var(--black);
+  background-image: none;
+}
+
+#light {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  z-index: 3;
+  font-size: 1.3em;
+}
+
+.light-mode {
+  color: white;
+}
+
+.main {
+  width: 80%;
+  padding: 2em;
+  margin: 10% auto;
+  background-color: white;
+  border-radius: .3rem;
+}
+
+.dark {
+  background-color: rgb(33, 32, 32);
+  color: white;
+}
+
+.dark thead tr th {
+  background-color: #7209b7;
+}
+
+.dark button {
+  background-color: #7209b7;
+  border: #7209b7;
+}
+
+.dark button:hover {
+  background-color: #480ca8;
+  border: #480ca8;
+}
+
+.dark .arrow {
+  background-color: #7209b7;
+}
+
+.dark .arrow:hover {
+  background-color: #480ca8;
+}
+
+.main .container {
+  overflow-x: auto;
+}
+
+.main .button-group {
+  padding: 0;
+  height: 40px;
+  font-family: 'Lato', sans-serif;
+}
+
+.main form {
+  width: 100%;
+}
+
+.main label div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5em;
+  background-color: #0B6EFD;
+  color: white;
+  font-size: 1.1rem;
+  border-bottom-right-radius: .3rem;
+  border-top-right-radius: .3rem;
+}
+
+.main label div:hover {
+  background-color: #1553aa;
+}
+
+.main label div .fa-solid {
+  transition: all 0.4s ease-in-out;
+}
+
+.main label div .fa-solid:hover {
+  transform: translateX(10px);
+}
+
+.main input {
+  display: block;
+  min-height: 60px;
+  background-color: #bee5e3;
+  padding: .5em;
+  font-size: 1.1em;
+  transition: all 0.15s ease-in-out;
+}
+
+.dark input {
+  background-color: white;
+}
+
+.main input:first-child {
+  border-bottom-left-radius: .3rem;
+  border-top-left-radius: .3rem;
+}
+
+.main input::placeholder {
+  color: var(--black);
+}
+
+.main input:focus {
+  border: 5px solid transparent;
+  border-radius: .3rem;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  z-index: 2;
+}
+
+.dark input:focus {
+  border: 5px solid transparent;
+  border-radius: .3rem;
+  background-color: rgb(250, 248, 216);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  z-index: 2;
+}
+
+.main .alert {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  background-color: var(--pink);
+  padding: 1em;
+  margin: 1em auto;
+  border-radius: .3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: all 0.3s li;
+}
+
+.main .alert .fa-solid {
+  font-size: 1.5rem;
+}
+
+.main .alert .fa-solid:hover {
+  color: var(--black);
+}
+
+.main .message {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  background-color: var(--teal);
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: .3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: all 0.3s linear;
+}
+
+.main table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-radius: .3rem;
+  margin: 2em auto;
+}
+
+.main tr {
+  background-color: #f6f6f6;
+}
+
+.main thead tr {
+  border-radius: .3rem;
+}
+
+.main thead th {
+  position: relative;
+}
+
+.main thead th:nth-child(1),
+.main thead th:nth-child(2),
+.main thead th:nth-child(3) {
+  padding-left: 40px;
+}
+
+.main thead i {
+  position: absolute;
+  left: 12px;
+  top: 15px
+}
+
+.main tbody tr:last-child {
+  border-bottom-left-radius: .3rem;
+  border-bottom-right-radius: .3rem;
+}
+
+.main tr:nth-of-type(odd) {
+  background-color: #e9e9e9;
+}
+
+.main th {
+  background-color: #0B6EFD;
+  color: white;
+  padding: .5em;
+  font-weight: 400;
+  font-size: 1.2em;
+  text-transform: capitalize;
+}
+
+.main th:first-child {
+  border-top-left-radius: .3rem;
+}
+
+.main th:last-child {
+  border-top-right-radius: .3rem;
+}
+
+.main td {
+  font-family: 'Fredoka', sans-serif;
+  padding: .8em;
+  display: flex;
+  align-items: center;
+  color: black
+}
+
+.main td:nth-child(1), 
+.main td:nth-child(2),
+.main td:nth-child(3) {
+  font-size: 1.1em;
+}
+.main td:nth-child(2),
+.main td:nth-child(3) {
+  justify-content: center;
+}
+
+.main td:nth-child(4), 
+.main td:nth-child(5) {
+  font-size: 1.1rem;
+  justify-content: center;
+}
+
+.main table .fa-2x {
+  font-size: 1.1rem;
+  color: var(--yellow);
+  transition: all 0.3s ease-in-out;
+} 
+
+.main table .fa-2x:hover {
+  color: #ffca2c;
+  transform: scale(1.2);
+}
+
+.main table td:nth-child(5) .fa-2x {
+  color: #dc3545;
+}
+
+.main table td:nth-child(5) .fa-2x {
+  color: #bb2d3b;
+}
+
+.main table .fa-circle-check {
+  color: var(--green);
+  margin-right: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.main table .fa-circle-check:hover {
+  color: var(--teal);
+}
+
+.main table .editable {
+  background-color: white;
+  display: inline-block;
+  padding: .3em;
+  border-radius: .3rem;
+  margin-top: .3em;
+}
+
+.dark table .editable {
+  background-color: rgb(250, 248, 216);
+}
+
+.main .dismissible {
+  opacity: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  transition: all 0.3s linear;
+}
+
+.main .deleted {
+  display: none;
+}
+
+  /* Bostrap breackpoints */
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+  /* here your code */  
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* here your code */  
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* here your code */  
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  /* here your code */  
+}
