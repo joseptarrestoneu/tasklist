@@ -44,7 +44,7 @@ window.addEventListener("load", () => {
     })
 
     add.addEventListener("click", () => {
-        form.classList.remove("dismissible")
+        form.classList.remove("deleted")
     });
 
     close.addEventListener("click", () => {
@@ -61,7 +61,7 @@ window.addEventListener("load", () => {
                 event.preventDefault();
             };
             if (event.ctrlKey && event.shiftKey && event.code == "KeyS") {
-                addTask(id, container, message, input);
+                addTask(id, container, message, input, input1, input2);
             };
         });
     });
@@ -76,7 +76,7 @@ window.addEventListener("load", () => {
             alert.classList.remove("dismissible");
         } else {
             addTask(id, container, message, input, input1, input2);
-            form.classList.add("dismissible");
+            form.classList.add("deleted");
         }
         done = document.querySelectorAll(".fa-circle-check");  
     });  
