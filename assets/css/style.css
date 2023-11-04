@@ -132,6 +132,10 @@ h1 {
   border: #480ca8;
 }
 
+.main label {
+  width: 100%;
+}
+
 .main label div {
   display: flex;
   min-height: 40px;
