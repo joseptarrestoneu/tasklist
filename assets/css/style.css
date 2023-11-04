@@ -439,18 +439,20 @@ footer a {
     padding: 2.5em;
   }
 
-  h1 {
-    font-size: 2.6em;
+  .main .header {
+    flex-direction: row;
+    justify-content: end;
+  }
+  
+  .main .button-group {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
   }
 
   .main .button-group .button {
       width: 1/3;
       font-size: 1em;
-  }
-
-  .main .button-group {
-    display: flex;
-    flex-direction: row;
   }
 
   .main label {
@@ -567,19 +569,6 @@ footer a {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 992px) {
-  .main .header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .main .button-group {
-    justify-content: end;
-  }
-
-  .main .button-group .button {
-    justify-content: end;
-    width: 100px;
-  }
 
 }
 
