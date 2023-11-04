@@ -326,12 +326,13 @@ header {
 
 .main tbody tr td:nth-of-type(2), 
 .main tbody tr td:nth-of-type(3) {
+  font-size: 0.75em;
   width: 30%;
   justify-content: center;
 }
 .main tbody tr td:nth-of-type(4), 
-.main tbody tr td:nth-of-type(5) 
-{
+.main tbody tr td:nth-of-type(5) {
+  font-size: 0.75em;
   width: 20%;
   justify-content: center;
 }
@@ -355,7 +356,7 @@ header {
 }
 
 .main table .fa-2x {
-  font-size: 1.1rem;
+  font-size: .95rem;
   color: var(--yellow);
   transition: all 0.3s ease-in-out;
 } 
