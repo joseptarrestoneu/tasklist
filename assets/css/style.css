@@ -304,17 +304,22 @@ h1 {
   display: flex;
   padding: .5em .8em;
   color: black;
+  align-items: center;
 }
 
 .main tbody tr td:nth-child(1) {
   width: 100%;
 }
+
 .main tbody tr td:nth-of-type(2), 
-.main tbody tr td:nth-of-type(3), 
+.main tbody tr td:nth-of-type(3) {
+  width: 30%;
+  justify-content: center;
+}
 .main tbody tr td:nth-of-type(4), 
 .main tbody tr td:nth-of-type(5) 
 {
-  width: 50%;
+  width: 20%;
   justify-content: center;
 }
 
