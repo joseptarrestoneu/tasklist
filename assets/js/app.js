@@ -74,7 +74,6 @@ window.addEventListener("load", () => {
             input1.value = "";
             input2.value = "";
             alert.classList.remove("dismissible");
-            form.classList.add("dismissible");
         } else {
             addTask(id, container, message, input, input1, input2);
             form.classList.add("dismissible");

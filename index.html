@@ -18,13 +18,6 @@
         <i onclick="changeLight()" class="fa-solid fa-moon" id="light"></i>
     </header>
     <div class="main">
-        <div class="header">
-            <div class="button-group">
-                <button class="button all">All</button>
-                <button class="button todo">ToDo</button>
-                <button class="button done">Done</button>
-            </div>
-        </div>
         <div class="alert dismissible">
             Please, enter some text.
             <i class="fa-solid fa-square-xmark"></i>
@@ -33,7 +26,6 @@
             Tarea añadida.
         </div>
         <form class="formulario dismissible" name="new-task">
-            </label>
             <label for="task">
                 <input type="text" name="task" id="task" placeholder="Add a new task">
                 <input type="date" name="date1" id="dateStart">
@@ -43,6 +35,13 @@
                 </div>
             </label>
         </form>
+        <div class="header">
+            <div class="button-group">
+                <button class="button all">All</button>
+                <button class="button todo">ToDo</button>
+                <button class="button done">Done</button>
+            </div>
+        </div>
         <div class="list-task">
             <table>
                 <thead>

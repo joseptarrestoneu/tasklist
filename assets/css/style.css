@@ -67,10 +67,14 @@ header {
 
 .main {
   width: 100vw;
-  padding: 3.8em 1em;
+  padding: 2.4em 1em;
   margin: auto;
   background-color: white;
   border-radius: .3rem;
+}
+
+.formulario {
+  padding-top: 1em;
 }
 
 .dark {
@@ -103,7 +107,7 @@ header {
   width: 100%;
   display: flex;
   padding: 0;
-  margin-bottom: 1.3em;
+  margin-top: 1em;
 }
 
 .main .button-group .button {
@@ -235,7 +239,7 @@ header {
   opacity: 1;
   background-color: var(--teal);
   padding: 1em;
-  margin: .5em 0;
+  margin: 1em 0;
   border-radius: .3rem;
   display: flex;
   justify-content: space-between;
