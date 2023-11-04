@@ -53,13 +53,21 @@ header {
   background-image: none;
 }
 
+.dark-mode header {
+  background-color: #480ca8;
+}
+
+.dark-mode footer {
+  background-color: #480ca8;
+}
+
 .light-mode {
   color: white;
 }
 
 .main {
   width: 100vw;
-  padding: 3.5em 1em;
+  padding: 3.8em 1em;
   margin: auto;
   background-color: white;
   border-radius: .3rem;
@@ -95,6 +103,7 @@ header {
   width: 100%;
   display: flex;
   padding: 0;
+  margin-bottom: 1.3em;
 }
 
 .main .button-group .button {
@@ -385,6 +394,7 @@ header {
   opacity: 0 !important;
   height: 0 !important;
   padding: 0 !important;
+  margin: 0 !important;
   transition: all 0.3s linear;
 }
 

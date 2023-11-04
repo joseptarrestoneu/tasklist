@@ -2,6 +2,8 @@ window.addEventListener("load", () => {
     let id = 0;
     let alert = document.querySelector(".alert");
     let message = document.querySelector(".message");
+    let form = document.querySelector(".formulario");
+    let add = document.querySelector("#addTask");
     let close = alert.firstElementChild;
     let input = document.querySelector("#task"); 
     let input1 = document.querySelector("#dateStart"); 
@@ -15,7 +17,6 @@ window.addEventListener("load", () => {
     let buttonAll = document.querySelector(".all");
     let buttonToDo = document.querySelector(".todo");
     let buttonDone = document.querySelector(".done");
-    let darkMode = document.querySelector(".light");
 
     window.addEventListener("keydown", (event) => {
         if (event.ctrlKey && event.code == "F8" ) {
@@ -42,9 +43,13 @@ window.addEventListener("load", () => {
         }
     })
 
-    close.addEventListener("click", ()=> {
+    add.addEventListener("click", () => {
+        form.classList.remove("dismissible")
+    });
+
+    close.addEventListener("click", () => {
         alert.classList.add("dismissible")
-    })
+    });
     
     input.addEventListener("focus", () => {
         document.addEventListener("keydown", (event) => {
@@ -69,8 +74,10 @@ window.addEventListener("load", () => {
             input1.value = "";
             input2.value = "";
             alert.classList.remove("dismissible");
+            form.classList.add("dismissible");
         } else {
             addTask(id, container, message, input, input1, input2);
+            form.classList.add("dismissible");
         }
         done = document.querySelectorAll(".fa-circle-check");  
     });  

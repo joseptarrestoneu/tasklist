@@ -13,7 +13,7 @@
 </head> 
 <body class="total">
     <header>
-        <i class="fa-solid fa-circle-plus"></i>
+        <i class="fa-solid fa-circle-plus" id="addTask"></i>
         <span class="title">Task List</span>
         <i onclick="changeLight()" class="fa-solid fa-moon" id="light"></i>
     </header>
@@ -32,7 +32,7 @@
         <div class="message dismissible">
             Tarea añadida.
         </div>
-        <form class="formulario" name="new-task">
+        <form class="formulario dismissible" name="new-task">
             </label>
             <label for="task">
                 <input type="text" name="task" id="task" placeholder="Add a new task">
