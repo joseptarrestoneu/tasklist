@@ -46,6 +46,7 @@ header {
   font-size: 0.925em;
   background-color:#1553aa;
   color: white;
+  z-index: 3;
 }
 
 .dark-mode {
@@ -415,6 +416,7 @@ footer {
   position: fixed;
   font-size: 0.725em;
   background-color:#1553aa;
+  z-index: 3;
 }
 
 footer a {
