@@ -433,6 +433,10 @@ header {
   font-size: .8em;
 }
 
+.main .deleted {
+  display: none;
+}
+
 footer {
   bottom: 0;
   width: 100%;

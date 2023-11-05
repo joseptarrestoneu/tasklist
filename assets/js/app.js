@@ -301,14 +301,14 @@ function changeLight() {
 
 // Funcion contar tareas
 function countTask () {
-    let done = document.querySelectorAll(".fa-circle-check")
-    let buttonAll = document.querySelector(".all");
-    let buttonToDo = document.querySelector(".todo");
-    let buttonDone = document.querySelector(".done");
+    let doneTaks = document.querySelectorAll(".fa-circle-check")
+    let buttonAlls = document.querySelector(".all");
+    let buttonToDos = document.querySelector(".todo");
+    let buttonDones = document.querySelector(".done");
     let taskAll = 0; 
     let taskToDo = 0;
     let taskDone = 0;
-    done.forEach((element) => {
+    doneTaks.forEach((element) => {
         if (element.nextElementSibling.dataset.completed == "false") {
             taskToDo = taskToDo + 1;           
         }
@@ -317,9 +317,9 @@ function countTask () {
         }
     })
     taskAll = taskToDo + taskDone;
-    buttonAll.firstElementChild.innerHTML = taskAll;
-    buttonToDo.firstElementChild.innerHTML = taskToDo;
-    buttonDone.firstElementChild.innerHTML = taskDone;
+    buttonAlls.firstElementChild.innerHTML = taskAll;
+    buttonToDos.firstElementChild.innerHTML = taskToDo;
+    buttonDones.firstElementChild.innerHTML = taskDone;
 }
 
 // PROYECTO
