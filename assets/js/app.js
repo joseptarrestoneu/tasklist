@@ -48,7 +48,7 @@ window.addEventListener("load", () => {
     add.addEventListener("click", () => {
         if (add.getAttribute("class") !== "fa-solid fa-circle-plus") {
             add.setAttribute("class","fa-solid fa-circle-plus");
-            form.classList.add("deleted")
+            form.classList.add("deleted");
         } else {
             add.setAttribute("class","fa-solid fa-circle-minus");
             form.classList.remove("deleted")

@@ -66,6 +66,14 @@ header {
   color: white;
 }
 
+#light:hover {
+  transform: scale(1.2);
+}
+
+#addTask:hover {
+  transform: scale(1.2);
+}
+
 .main {
   width: 100vw;
   padding: 2.4em 1em;
