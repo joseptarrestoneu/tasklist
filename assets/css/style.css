@@ -112,6 +112,7 @@ header {
 }
 
 .main .button-group .button {
+  position: relative;
   width: 100%;
   height: 40px;
   background-color: #0B6EFD;
@@ -119,6 +120,22 @@ header {
   font-weight: 400;
   font-size: .875em;
   color: white;
+}
+
+.main .button-group .button span {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 6px;
+  right: 5px;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  background-color: #0c65e1;
+  color: white;
+  font-size: .7em;
+  text-align: center;
 }
 
 .main .button-group .button:hover {
@@ -143,6 +160,10 @@ header {
 .dark .button-group .button:hover {
   background-color: #480ca8;
   border: #480ca8;
+}
+
+.dark .button-group .button span {
+  background-color: #66129e;
 }
 
 .main label {
@@ -211,11 +232,11 @@ header {
   z-index: 2;
 }
 
-.main .alert {
+.main .alert,
+.main .message {
   width: 100%;
   height: auto;
   opacity: 1;
-  background-color: var(--pink);
   padding: 1em;
   margin: .5em auto;
   border-radius: .3rem;
@@ -226,27 +247,12 @@ header {
   font-size: .875em;
 }
 
-.main .alert .fa-solid {
-  font-size: 1.3em;
-}
-
-.main .alert .fa-solid:hover {
-  color: var(--black);
+.main .alert {
+  background-color: var(--pink);
 }
 
 .main .message {
-  width: 100%;
-  height: auto;
-  opacity: 1;
   background-color: var(--teal);
-  padding: 1em;
-  margin: 1em 0;
-  border-radius: .3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  transition: all 0.3s linear;
-  font-size: .875em;
 }
 
 .main table {
@@ -255,7 +261,7 @@ header {
   border-spacing: 0;
   border-radius: .3rem;
   margin: 1.5em auto;
-  font-size: 0.95em;
+  font-size: .95em;
 }
 
 .main tr {
@@ -326,13 +332,13 @@ header {
 
 .main tbody tr td:nth-of-type(2), 
 .main tbody tr td:nth-of-type(3) {
-  font-size: 0.75em;
+  font-size: .75em;
   width: 30%;
   justify-content: center;
 }
 .main tbody tr td:nth-of-type(4), 
 .main tbody tr td:nth-of-type(5) {
-  font-size: 0.75em;
+  font-size: .75em;
   width: 20%;
   justify-content: center;
 }
@@ -436,6 +442,11 @@ footer a {
     background-image: linear-gradient(to right, #e2e2e2, #c9d6ff);
   }
 
+  header {
+    height: 60px;
+    font-size: 1.2em;
+  }
+
   .main {
     width: 80%;
     margin: 10% auto;
@@ -455,7 +466,13 @@ footer a {
 
   .main .button-group .button {
       width: 1/3;
-      font-size: 1em;
+      font-size: 1.1em;
+  }
+
+  .main .button-group .button span {
+    width: 17px;
+    height: 17px;
+    font-size: .6em;
   }
 
   .main label {
@@ -511,6 +528,7 @@ footer a {
   .main thead {
     display: flex;
     width: 100%;
+    font-size: 1.2em;
   }
 
   .main thead tr {
@@ -551,20 +569,22 @@ footer a {
     flex-wrap: nowrap;
   }
 
-  .main tbody td:nth-child(1) {
+  .main tbody tr td:nth-child(1) {
     justify-content: start;
     flex-basis: 60%;
+    font-size: 1.2em;
   }
 
-  .main tbody td:nth-child(2),
-  .main tbody td:nth-child(3) {
+  .main tbody tr td:nth-child(2),
+  .main tbody tr td:nth-child(3) {
+    font-size: 1.1em;
     justify-content: center;
     flex-basis: 15%;
   }
 
-  .main tbody td:nth-child(4), 
-  .main tbody td:nth-child(5) {
-    font-size: 1.1rem;
+  .main tbody tr td:nth-child(4), 
+  .main tbody tr td:nth-child(5) {
+    font-size: 1.1em;
     justify-content: center;
     flex-basis: 5%;
   }

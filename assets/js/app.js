@@ -4,7 +4,6 @@ window.addEventListener("load", () => {
     let message = document.querySelector(".message");
     let form = document.querySelector(".formulario");
     let add = document.querySelector("#addTask");
-    let close = alert.firstElementChild;
     let input = document.querySelector("#task"); 
     let input1 = document.querySelector("#dateStart"); 
     let input2 = document.querySelector("#dateEnd"); 
@@ -18,7 +17,10 @@ window.addEventListener("load", () => {
     let buttonToDo = document.querySelector(".todo");
     let buttonDone = document.querySelector(".done");
 
+    countTask();
+    
     window.addEventListener("keydown", (event) => {
+
         if (event.ctrlKey && event.code == "F8" ) {
             input.focus()
         };
@@ -46,10 +48,6 @@ window.addEventListener("load", () => {
     add.addEventListener("click", () => {
         form.classList.remove("deleted")
     });
-
-    close.addEventListener("click", () => {
-        alert.classList.add("dismissible")
-    });
     
     input.addEventListener("focus", () => {
         document.addEventListener("keydown", (event) => {
@@ -74,6 +72,9 @@ window.addEventListener("load", () => {
             input1.value = "";
             input2.value = "";
             alert.classList.remove("dismissible");
+            setTimeout(() => {
+                alert.classList.add("dismissible");
+            }, 3000);
         } else {
             addTask(id, container, message, input, input1, input2);
             form.classList.add("deleted");
@@ -84,14 +85,14 @@ window.addEventListener("load", () => {
     // Marcar las tareas como realizadas. Hay que recorrer todos los items
     done.forEach(item => {
         item.addEventListener("click", (event) => {
-            deleteTask(event)
+            deleteTask(event);
         });        
     });
 
     // Borrar las tareas como realizadas. Hay que recorrer todos los items
     trash.forEach(item => {
         item.addEventListener("click", (event) => {
-            removeTask(event, false)
+            removeTask(event, false);
         });        
     });
 
@@ -105,7 +106,7 @@ window.addEventListener("load", () => {
     // Editar las tareas como realizadas pero desde la misma tarea. Hay que recorrer todos los items
     task.forEach(item => {
         item.addEventListener("focus", (event) => {
-            editTask(event, true)
+            editTask(event, true);
         });        
     });
 
@@ -193,11 +194,14 @@ const addTask = (id, container, message, input, input1, input2) => {
     container.querySelector("tbody").lastElementChild.firstElementChild.lastElementChild.addEventListener("focus", (event) => {
         editTask(event, true)
     })
+
+    countTask();
+
     message.classList.remove("dismissible");
 
     setTimeout(() => {
         message.classList.add("dismissible");
-    }, 5000);
+    }, 3000);
 
     input.value = "";
     input1.value = "";
@@ -212,10 +216,12 @@ const deleteTask = (event) => {
         event.target.nextElementSibling.innerHTML = `${text}`;
         // Añadimos data-completed para dar información al programador
         task.setAttribute("data-completed", "false");
+        countTask();
     } else {
         event.target.nextElementSibling.innerHTML = `<del>${text}</del>`;
         // Añadimos data-completed para dar información al programador
         task.setAttribute("data-completed", "true");
+        countTask();
     }
 }
 
@@ -223,8 +229,10 @@ const deleteTask = (event) => {
 const removeTask = (event, editing) => {
     if (editing) {
         event.target.parentNode.parentNode.remove();
+        countTask();
     } else {
         event.target.parentNode.parentNode.parentNode.remove();
+        countTask();
     }
 }
 
@@ -239,12 +247,14 @@ const editTask = (event, onfocus) => {
                 editask.target.blur();
                 if (editask.target.textContent.trim().length === 0) {
                     removeTask(editask, true);
+                    countTask();
                 }
             }
         });
         editask.target.addEventListener("blur", () => {
             if (editask.target.innerHTML === "") {
                 removeTask(editask, true);
+                countTask();
             }
             editask.target.classList.remove("editable");
         });
@@ -252,6 +262,7 @@ const editTask = (event, onfocus) => {
         let editableTask = event.target.parentNode.parentNode.parentNode.firstElementChild.lastElementChild;
         editableTask.classList.add("editable");
         editableTask.focus();
+        countTask();
     }
 }
 
@@ -280,4 +291,28 @@ function changeLight() {
     }
     main.classList.toggle("dark")
     body.classList.toggle("dark-mode")
+}
+
+// Funcion contar tareas
+function countTask () {
+    let done = document.querySelectorAll(".fa-circle-check")
+    let buttonAll = document.querySelector(".all");
+    let buttonToDo = document.querySelector(".todo");
+    let buttonDone = document.querySelector(".done");
+    let taskAll = 0; 
+    let taskToDo = 0;
+    let taskDone = 0;
+    done.forEach((element) => {
+        if (element.nextElementSibling.dataset.completed == "false") {
+            taskToDo = taskToDo + 1;           
+        }
+        if (element.nextElementSibling.dataset.completed == "true") {
+            taskDone = taskDone + 1;
+        }
+    })
+    taskAll = taskToDo + taskDone;
+    buttonAll.firstElementChild.innerHTML = taskAll;
+    buttonToDo.firstElementChild.innerHTML = taskToDo;
+    buttonDone.firstElementChild.innerHTML = taskDone;
+    
 }
