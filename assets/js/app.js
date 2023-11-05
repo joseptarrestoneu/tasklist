@@ -46,7 +46,13 @@ window.addEventListener("load", () => {
     })
 
     add.addEventListener("click", () => {
-        form.classList.remove("deleted")
+        if (add.getAttribute("class") !== "fa-solid fa-circle-plus") {
+            add.setAttribute("class","fa-solid fa-circle-plus");
+            form.classList.add("deleted")
+        } else {
+            add.setAttribute("class","fa-solid fa-circle-minus");
+            form.classList.remove("deleted")
+        }
     });
     
     input.addEventListener("focus", () => {
@@ -169,7 +175,6 @@ const generateRow = (id, text, date1, date2) => {
         </td>
     </tr>`
     return newRow
-
 }
 
 // Funcion añadir tarea
@@ -314,5 +319,18 @@ function countTask () {
     buttonAll.firstElementChild.innerHTML = taskAll;
     buttonToDo.firstElementChild.innerHTML = taskToDo;
     buttonDone.firstElementChild.innerHTML = taskDone;
-    
+}
+
+// PROYECTO
+// Funcion calendario anual de tareas
+function anualTask () {
+    for (let i = 0; i < 54; i++) {
+        generateDay()
+    }
+}
+
+// Generar clanedario
+const generateDay = (date, tasks) => {
+    let newDate = `<div id="${date}">${tasks}</div>`
+    return newDate
 }
