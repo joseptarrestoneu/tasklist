@@ -84,6 +84,7 @@ window.addEventListener("load", () => {
         } else {
             addTask(id, container, message, input, input1, input2);
             form.classList.add("deleted");
+            add.setAttribute("class","fa-solid fa-circle-plus");
         }
         done = document.querySelectorAll(".fa-circle-check");  
     });  
