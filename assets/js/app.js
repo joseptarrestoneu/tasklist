@@ -19,6 +19,20 @@ window.addEventListener("load", () => {
 
     countTask();
     
+    getAllTasks().then( task => {
+        task.map(element => {
+            console.log(typeof(element.initialDate));
+            
+            let id =  element.id;
+            let input = element.titleTask;
+            let input1 = element.initialDate;
+            let input2 = element.finalDate;
+            let messageText = "no alert";
+            let close = element.closedTask
+            addTask(id, container, messageText, input, input1, input2, close);
+        })
+    })
+
     window.addEventListener("keydown", (event) => {
 
         if (event.ctrlKey && event.code == "F8" ) {
@@ -72,6 +86,10 @@ window.addEventListener("load", () => {
 
     arrow.addEventListener("click", (event) => {
         // Eliminar los espacios al principio y al final del string
+        let inputInfo = input.value;
+        let inputInitialDateInfo = input1.valueAsDate;
+        let inputFinalDateInfo = input2.valueAsDate;
+
         if (input.value.trim() === "") {
             event.preventDefault();
             input.value = "";
@@ -82,7 +100,13 @@ window.addEventListener("load", () => {
                 alert.classList.add("dismissible");
             }, 3000);
         } else {
-            addTask(id, container, message, input, input1, input2);
+            postTask(inputInfo, inputInitialDateInfo, inputFinalDateInfo);
+            getAllTasks().then( task => { 
+                let idLastTask = task[task.length-1].id
+                console.log(input1);
+                
+                addTask(idLastTask, container, message, input, input1, input2);
+            })
             form.classList.add("deleted");
             add.setAttribute("class","fa-solid fa-circle-plus");
         }
@@ -149,18 +173,18 @@ window.addEventListener("load", () => {
 });
 
 // Funcion para generar una nueva fila (nueva nota) => refactoración
-const generateRow = (id, text, date1, date2) => {
+const generateRow = (id, text, date1, date2, close) => {
     //Opcion 1
     let newRow = `<tr id=${id} class="task-file">
         <td>
             <i class="fa-solid fa-circle-check fa-2x"></i>
-            <span class="task" contenteditable="true" data-completed="false">${text}</span>
+            <span class="task" contenteditable="true" data-completed="${close}">${text}</span>
         </td>
         <td>
-            <span class="task" contenteditable="true" data-completed="false">${date1}</span>
+            <span class="task" contenteditable="true">${date1}</span>
         </td>
         <td>
-            <span class="task" contenteditable="true" data-completed="false">${date2}</span>
+            <span class="task" contenteditable="true">${date2}</span>
         </td>
         <td>
             <span class="fa-stack fa-2x">
@@ -179,11 +203,39 @@ const generateRow = (id, text, date1, date2) => {
 }
 
 // Funcion añadir tarea
-const addTask = (id, container, message, input, input1, input2) => {
-    id++;
+const addTask = (id, container, message, input, input1, input2, close) => {
+    let idText = id;
+    let inputText = input;
+    let input1Text = input1;
+    let input2Text = input2;
 
+    console.log(typeof(input));
+
+    if (typeof(id) == 'object') {
+        idText = id.value
+    }
+    if (typeof(inputText) == 'object') {
+        inputText = input.value
+    }
+    if(typeof(input1Text) !== 'object') {
+        console.log(input1Text);
+        
+        input1Text == null ? input1Text = "" : input1Text = new Date(`${input1Text}`).toLocaleDateString()
+    } else {
+        console.log(input1Text);
+        input1Text == null ? input1Text = "" : input1Text = input1Text.valueAsDate.toLocaleDateString()
+    }
+    if (typeof(input2Text) !== 'object') {
+        console.log(input2Text);
+
+        input2Text == null ? input2Text = "" : input2Text = new Date(`${input2Text}`).toLocaleDateString()
+    } else {
+         input2Text == null ? input2Text = "" : input2Text = input2Text.valueAsDate.toLocaleDateString()
+    }
+    
     // // Control de fechas. Permitimos entrar tareas sin fecha. Si nos viene sin fechas devolvemos string vacio
-    container.querySelector("tbody")?.insertAdjacentHTML("beforeend", generateRow(id, input.value, input1.valueAsDate?.toLocaleDateString() || "", input2.valueAsDate?.toLocaleDateString()  || ""));
+    container.querySelector("tbody")?.insertAdjacentHTML("beforeend", generateRow(idText, inputText, input1Text || "", input2Text || "", close));
+    // container.querySelector("tbody")?.insertAdjacentHTML("beforeend", generateRow(id, input.value, input1.valueAsDate?.toLocaleDateString() || "", input2.valueAsDate?.toLocaleDateString()  || ""));
     // Añadimos escuchador de eventos para el primer boton
     container.querySelector("tbody").lastElementChild.firstElementChild.firstElementChild.addEventListener("click", (event) => {
         deleteTask(event)
@@ -203,11 +255,14 @@ const addTask = (id, container, message, input, input1, input2) => {
 
     countTask();
 
-    message.classList.remove("dismissible");
+    if (message !== "no alert") {
 
-    setTimeout(() => {
-        message.classList.add("dismissible");
-    }, 3000);
+        message.classList.remove("dismissible");
+
+        setTimeout(() => {
+            message.classList.add("dismissible");
+        }, 3000);
+    } 
 
     input.value = "";
     input1.value = "";
@@ -218,13 +273,13 @@ const addTask = (id, container, message, input, input1, input2) => {
 const deleteTask = (event) => {
     let task = event.target.nextElementSibling
     let text = task.textContent;
-    if (task.querySelector("del")) {
+    if (task.getAttribute("data-completed") === "true") {
         event.target.nextElementSibling.innerHTML = `${text}`;
         // Añadimos data-completed para dar información al programador
         task.setAttribute("data-completed", "false");
         countTask();
     } else {
-        event.target.nextElementSibling.innerHTML = `<del>${text}</del>`;
+        // event.target.nextElementSibling.innerHTML = `<del>${text}</del>`;
         // Añadimos data-completed para dar información al programador
         task.setAttribute("data-completed", "true");
         countTask();
@@ -235,16 +290,20 @@ const deleteTask = (event) => {
 const removeTask = (event, editing) => {
     if (editing) {
         event.target.parentNode.parentNode.remove();
+        console.log(event.target.parentNode.parentNode);
+        deleteTasks(event.target.parentNode.parentNode.getAttribute("id"))
         countTask();
     } else {
         event.target.parentNode.parentNode.parentNode.remove();
+        console.log(event.target.parentNode.parentNode.parentNode.getAttribute("id"));
+        deleteTasks(event.target.parentNode.parentNode.parentNode.getAttribute("id"))
         countTask();
     }
 }
 
 // Funcion para editar las tareas como realizadas
 const editTask = (event, onfocus) => {
-    let editask = event;
+    let editask = event;   
     if (onfocus) {
         editask.target.classList.add("editable");
         document.addEventListener("keydown", (event) => {
@@ -268,6 +327,13 @@ const editTask = (event, onfocus) => {
         let editableTask = event.target.parentNode.parentNode.parentNode.firstElementChild.lastElementChild;
         editableTask.classList.add("editable");
         editableTask.focus();
+
+        let idTask = event.target.parentNode.parentNode.parentNode.getAttribute("id");
+        let titleTask = event.target.parentNode.parentNode.parentNode.firstElementChild.lastElementChild.textContent;
+        let initialDateTask = event.target.parentNode.parentNode.parentNode.firstElementChild.nextElementSibling.lastElementChild.textContent;
+        let finalDateTask = event.target.parentNode.parentNode.parentNode.firstElementChild.nextElementSibling.nextElementSibling.lastElementChild.textContent;
+
+        putTask(idTask, titleTask, initialDateTask, finalDateTask)
         countTask();
     }
 }
@@ -334,4 +400,79 @@ function anualTask () {
 const generateDay = (date, tasks) => {
     let newDate = `<div id="${date}">${tasks}</div>`
     return newDate
+}
+
+// Importar tasks de la BBDD
+const getAllTasks = () => {
+    return fetch('http://localhost:3001/api/tasks')
+        .then(response => response.json())
+        .then((json) => json );
+
+}
+
+// Grabar tasks a la BBDD
+const postTask = (title, initialDate, finalDate) => {
+
+    let titleText = title;
+    let descriptionText = "xxxx"
+    let initialDateText = initialDate;
+    let finalDateText = finalDate;
+    let userTaskText = "Josep Tarrés"
+
+    const update = {
+        titleTask: titleText,
+        descriptionTask: descriptionText,
+        initialDate: initialDateText,
+        finalDate: finalDateText,
+        closedTask: false,
+        userTask: userTaskText,
+    };
+       
+    const options = {
+        method: 'POST',
+        headers: 
+            {
+                'Content-Type': 'application/json',
+            },
+        body: JSON.stringify(update),
+    };
+
+    fetch('http://localhost:3001/api/tasks', options)
+
+}
+
+// Borrar tasks de la BBDD
+const deleteTasks = (id) => {
+    fetch(`http://localhost:3001/api/tasks/${id}`, { method: 'DELETE' })
+}
+
+// Editar tasks de la BBDD
+const putTask = (id, title, initialDate, finalDate) => {
+
+    let titleText = title;
+    let descriptionText = "Canviat";
+    let initialDateText = initialDate;
+    let finalDateText = finalDate;
+    let closeTaskText = false;
+    let userTaskText = "Marta";
+
+    const update = {
+        titleTask: titleText,
+        descriptionTask: descriptionText,
+        initialDate: initialDateText,
+        finalDate: finalDateText,
+        closedTask: closeTaskText,
+        userTask: userTaskText,
+    };
+
+    const options = {
+        method: 'PUT',
+        headers: 
+            {
+                'Content-Type': 'application/json',
+            },
+        body: JSON.stringify(update),
+    };
+
+    fetch(`http://localhost:3001/api/tasks/${id}`, options)
 }

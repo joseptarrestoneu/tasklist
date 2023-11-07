@@ -211,6 +211,10 @@ header {
   transition: all 0.15s ease-in-out;
 }
 
+[data-completed="true"] {
+  text-decoration: line-through;
+}
+
 .dark input {
   background-color: white;
 }
