@@ -22,9 +22,6 @@ window.addEventListener("load", () => {
     let header = document.querySelector(".header");
     let main = document.querySelector(".main");
     let footer = document.querySelector(".footer");
-    let next1Onboarding = document.querySelector(".next1");
-    let next2Onboarding = document.querySelector(".next2");
-    let next3Onboarding = document.querySelector(".next3");
     let calendar = document.querySelector(".calendar");
     let calendarDays = document.querySelector(".days");
     let title = document.querySelector("#viewCalendar");
@@ -157,38 +154,6 @@ window.addEventListener("load", () => {
             }
         })
     });
-
-    // Onboarding Pages automatic
-    // setTimeout(() => {
-    //     onboarding1.classList.add("deleted");
-    //     onboarding2.classList.remove("deleted");
-    // }, 5000)
-    // setTimeout(() => {
-    //     onboarding2.classList.add("deleted");
-    //     onboarding3.classList.remove("deleted");
-    // }, 10000)
-    // setTimeout(() => {
-    //     onboarding3.classList.add("deleted");
-    //     header.classList.remove("deleted");
-    //     main.classList.remove("deleted");
-    //     footer.classList.remove("deleted");
-    // }, 15000)
-
-    // Onboarding Pages click
-    next1Onboarding.addEventListener("click", () => {
-        onboarding1.classList.add("deleted");
-        onboarding2.classList.remove("deleted");
-    });
-    next2Onboarding.addEventListener("click", () => {
-        onboarding2.classList.add("deleted");
-        onboarding3.classList.remove("deleted");
-    });
-    next3Onboarding.addEventListener("click", () => {
-        onboarding3.classList.add("deleted");
-        header.classList.remove("deleted");
-        main.classList.remove("deleted");
-        footer.classList.remove("deleted");
-    })
 
     // Generar calendario
     for (let i = 1; i < 32; i++) {
