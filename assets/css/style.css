@@ -143,8 +143,11 @@ header {
   top: 0;
   width: 100%;
   height: 40px;
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   position: fixed;
   padding-left: 1.5em;
@@ -160,7 +163,8 @@ header {
   background-image: none;
 }
 
-.dark-mode header {
+.dark-mode header
+ {
   background-color: #480ca8;
 }
 
@@ -180,8 +184,31 @@ header {
   transform: scale(1.2);
 }
 
+.menu {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.menu i {
+  margin-right: 1em;
+}
+
+.menu2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu3 {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
 .main {
   width: 100vw;
+  height: 100svh;
   padding: 2.4em 1em;
   margin: auto;
   background-color: white;
@@ -524,22 +551,6 @@ header {
   transition: all 0.3s linear;
 }
 
-.calendar {
-  width: 80%;
-  height: 70vh;
-  margin: 4em auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
-}
-
-.calendar .day {
-  border: 1px solid #000;
-  width: 100%;
-  text-align: center;
-  font-size: .8em;
-}
-
-
 .main .deleted {
   display: none;
 }
@@ -565,6 +576,42 @@ footer a {
 
 .deleted {
   display: none;
+}
+
+/* Calendar */
+.calendar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.4em;
+  margin-bottom: 1em;
+  background-color: #e9e9e9;
+  border-radius: .3rem;
+  color: #000;
+}
+
+.month {
+  width: 100%;
+  margin: .7em auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+} 
+
+.days {
+  width: 90%;
+  height: 200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.calendar .day {
+  width: 100%;
+  text-align: center;
+  font-size: .8em;
 }
 
   /* Bostrap breackpoints */

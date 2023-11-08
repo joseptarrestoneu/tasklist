@@ -16,12 +16,18 @@ window.addEventListener("load", () => {
     let buttonAll = document.querySelector(".all");
     let buttonToDo = document.querySelector(".todo");
     let buttonDone = document.querySelector(".done");
-    let onboarding1 = document.querySelector(".onboarding1")
-    let onboarding2 = document.querySelector(".onboarding2")
-    let onboarding3 = document.querySelector(".onboarding3")
-    let header = document.querySelector(".header")
-    let main = document.querySelector(".main")
-    let footer = document.querySelector(".footer")
+    let onboarding1 = document.querySelector(".onboarding1");
+    let onboarding2 = document.querySelector(".onboarding2");
+    let onboarding3 = document.querySelector(".onboarding3");
+    let header = document.querySelector(".header");
+    let main = document.querySelector(".main");
+    let footer = document.querySelector(".footer");
+    let next1Onboarding = document.querySelector(".next1");
+    let next2Onboarding = document.querySelector(".next2");
+    let next3Onboarding = document.querySelector(".next3");
+    let calendar = document.querySelector(".calendar");
+    let calendarDays = document.querySelector(".days");
+    let title = document.querySelector("#viewCalendar");
 
     countTask();
     
@@ -152,25 +158,60 @@ window.addEventListener("load", () => {
         })
     });
 
+    // Onboarding Pages automatic
+    // setTimeout(() => {
+    //     onboarding1.classList.add("deleted");
+    //     onboarding2.classList.remove("deleted");
+    // }, 5000)
+    // setTimeout(() => {
+    //     onboarding2.classList.add("deleted");
+    //     onboarding3.classList.remove("deleted");
+    // }, 10000)
+    // setTimeout(() => {
+    //     onboarding3.classList.add("deleted");
+    //     header.classList.remove("deleted");
+    //     main.classList.remove("deleted");
+    //     footer.classList.remove("deleted");
+    // }, 15000)
 
-    // Onboarding Pages
-    setTimeout(() => {
+    // Onboarding Pages click
+    next1Onboarding.addEventListener("click", () => {
         onboarding1.classList.add("deleted");
         onboarding2.classList.remove("deleted");
-    }, 3000)
-    setTimeout(() => {
+    });
+    next2Onboarding.addEventListener("click", () => {
         onboarding2.classList.add("deleted");
         onboarding3.classList.remove("deleted");
-    }, 6000)
-    setTimeout(() => {
+    });
+    next3Onboarding.addEventListener("click", () => {
         onboarding3.classList.add("deleted");
         header.classList.remove("deleted");
         main.classList.remove("deleted");
         footer.classList.remove("deleted");
-    }, 9000)
+    })
 
+    // Generar calendario
+    for (let i = 1; i < 32; i++) {
+        let element = document.createElement("div")
+        element.innerText = i
+        element.classList.add("day")
+        calendarDays.appendChild(element)
+    
+    }
+
+    // Mostrar y esconder calendario
+    title.addEventListener("click", () => {
+        
+        if (calendar.getAttribute("class") === "calendar deleted") {
+            calendar.classList.remove("deleted")
+        } else {
+            calendar.classList.add("deleted")
+        }
+    })
 
 });
+
+
 
 // Funcion para generar una nueva fila (nueva nota) => refactoración
 const generateRow = (id, text, date1, date2) => {
@@ -355,7 +396,9 @@ function anualTask () {
 }
 
 // Generar clanedario
-const generateDay = (date, tasks) => {
-    let newDate = `<div id="${date}">${tasks}</div>`
+const generateDay = (date) => {
+    // let today = Date.now()
+    // let date = new Date(today)
+    let newDate = `<div id="${date}">${date}</div>`
     return newDate
 }
