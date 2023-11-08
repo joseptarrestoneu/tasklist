@@ -177,7 +177,6 @@ window.addEventListener("load", () => {
 });
 
 
-
 // Funcion para generar una nueva fila (nueva nota) => refactoración
 const generateRow = (id, text, date1, date2) => {
     //Opcion 1
