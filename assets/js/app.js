@@ -16,6 +16,12 @@ window.addEventListener("load", () => {
     let buttonAll = document.querySelector(".all");
     let buttonToDo = document.querySelector(".todo");
     let buttonDone = document.querySelector(".done");
+    let onboarding1 = document.querySelector(".onboarding1")
+    let onboarding2 = document.querySelector(".onboarding2")
+    let onboarding3 = document.querySelector(".onboarding3")
+    let header = document.querySelector(".header")
+    let main = document.querySelector(".main")
+    let footer = document.querySelector(".footer")
 
     countTask();
     
@@ -145,6 +151,24 @@ window.addEventListener("load", () => {
             }
         })
     });
+
+
+    // Onboarding Pages
+    setTimeout(() => {
+        onboarding1.classList.add("deleted");
+        onboarding2.classList.remove("deleted");
+    }, 3000)
+    setTimeout(() => {
+        onboarding2.classList.add("deleted");
+        onboarding3.classList.remove("deleted");
+    }, 6000)
+    setTimeout(() => {
+        onboarding3.classList.add("deleted");
+        header.classList.remove("deleted");
+        main.classList.remove("deleted");
+        footer.classList.remove("deleted");
+    }, 9000)
+
 
 });
 
