@@ -11,8 +11,6 @@ window.addEventListener("load", () => {
         signin.classList.remove("deleted")
     })
 
-
-
     loginSignin.addEventListener("click", (event) => {
         let userName = event.target.parentNode.firstElementChild.value;
         let userUser = event.target.parentNode.firstElementChild.nextElementSibling.value;
@@ -20,6 +18,19 @@ window.addEventListener("load", () => {
         postUser(userName, userUser, userPassword)
     })
 
+    loginButton.addEventListener("click", () => {
+        let userUser = event.target.parentNode.firstElementChild.value;
+        let userPassword = event.target.parentNode.firstElementChild.nextElementSibling.value;
+        getAllUsers().then(tasks => {
+            tasks.map(element => {
+                if (element.userUser == userUser && element.userPassword == userPassword) {
+                    window.location.href='principal.html';                  
+                }
+            })
+            
+        })
+       
+    })
 })
 
 const postUser = (userName, userUser, userPassword) => {
@@ -43,4 +54,10 @@ const postUser = (userName, userUser, userPassword) => {
     };
 
     fetch(`http://localhost:3001/api/users/`, options)
+}
+
+const getAllUsers = () => {
+    return fetch('http://localhost:3001/api/users')
+        .then(response => response.json())
+        .then((json) => json );
 }
