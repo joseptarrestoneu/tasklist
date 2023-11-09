@@ -23,7 +23,7 @@ window.addEventListener("load", () => {
         
     })
 
-    const postUser = (name, user, password) => {
+    const postUser = () => {
 
         let userName = document.forms["signingForm"]["name"].value;
         let userUser = document.forms["signingForm"]["user"].value;;
