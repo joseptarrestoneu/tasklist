@@ -57,6 +57,16 @@
     color: #B19AC5;
 }
 
+
+.onboarding form {
+    width: 80%;
+    margin: 3em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
 .spinner {
     margin: 3em auto 0;
     width: 70px;
@@ -96,25 +106,17 @@
     }
 }
 
-a {
-    text-decoration: none;
-    color: #B19AC5;
-}
-
-.onboarding3 .login {
-    width: 80%;
-    margin: auto;
-}
-
 input {
     border-bottom: 1px solid  rgb(212, 211, 211);
     margin: 1em;
+    padding-right: .3em;
     color: rgb(212, 211, 211);
     font-size: .875em;
+    width: 90%;
  }
 
 .button {
-    width: 100%;
+    width: 90%;
     height: 40px;
     margin-top: 2em;
     margin-bottom: 2em;
@@ -127,6 +129,17 @@ input {
     color: white;
 }
 
-.button a {
-    color: white;
+.logo {
+    font-size: .7em;
+    padding-bottom: 1em;
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+    color: #B19AC5;
+}
+
+body .deleted {
+    display: none;
 }
