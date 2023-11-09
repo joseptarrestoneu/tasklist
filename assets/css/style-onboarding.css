@@ -41,6 +41,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     font-family: 'Montserrat', sans-serif;
+    position: relative;
 }
 
 .onboarding img {
@@ -130,9 +131,11 @@ input {
 }
 
 .logo {
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%, -1%);
     font-size: .7em;
-    padding-bottom: 1em;
-    margin: auto;
 }
 
 a {
