@@ -12,20 +12,17 @@ window.addEventListener("load", () => {
     })
 
 
+
     loginSignin.addEventListener("click", (event) => {
         let userName = event.target.parentNode.firstElementChild.value;
         let userUser = event.target.parentNode.firstElementChild.nextElementSibling.value;
         let userPassword = event.target.parentNode.firstElementChild.nextElementSibling.nextElementSibling.value;
-        postUser()
+        postUser(userName, userUser, userPassword)
     })
 
 })
 
-const postUser = () => {
-
-    let userName = document.forms["signingForm"]["name"].value;
-    let userUser = document.forms["signingForm"]["user"].value;;
-    let userPassword = document.forms["signingForm"]["password"].value;;
+const postUser = (userName, userUser, userPassword) => {
 
     const update = {
         userName: userName,
