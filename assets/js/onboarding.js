@@ -38,16 +38,16 @@ window.addEventListener("load", () => {
         console.log(update);
         
     
-        // const options = {
-        //     method: 'POST',
-        //     headers: 
-        //         {
-        //             'Content-Type': 'application/json',
-        //         },
-        //     body: JSON.stringify(update),
-        // };
+        const options = {
+            method: 'POST',
+            headers: 
+                {
+                    'Content-Type': 'application/json',
+                },
+            body: JSON.stringify(update),
+        };
     
-        // fetch(`http://localhost:3001/api/users/`, options)
+        fetch(`http://localhost:3001/api/users/`, options)
     }
 
 })
