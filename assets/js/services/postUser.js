@@ -1,8 +1,4 @@
-const postUser = (name, user, password) => {
-
-    let userName = name;
-    let userUser = user;
-    let userPassword = password;
+export const postUser = (userName, userUser, userPassword) => {
 
     const update = {
         userName: userName,
@@ -19,5 +15,6 @@ const postUser = (name, user, password) => {
         body: JSON.stringify(update),
     };
 
-    fetch(`http://localhost:3001/api/users/`, options)
+    // fetch(`http://localhost:3001/api/users/`, options)
+    fetch(`https://tasklist-backend-dtk7.onrender.com/api/users/`, options)
 }
