@@ -54,4 +54,8 @@ const postUser = (name, user, password) => {
 
     // fetch(`http://localhost:3001/api/users/`, options)
     fetch(`https://tasklist-backend-dtk7.onrender.com/api/users`, options)
+        .then(user => {
+            console.log(user);
+            ;
+        })
 }
