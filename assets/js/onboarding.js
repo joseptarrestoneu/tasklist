@@ -1,4 +1,4 @@
-import { postUser } from "./services/postUser.js";
+// import { postUser } from "./services/postUser.js";
 import { getAllUsers } from "./services/getUsers.js";
 
 window.addEventListener("load", () => {
@@ -18,6 +18,7 @@ window.addEventListener("load", () => {
         let userUser = event.target.parentNode.firstElementChild.nextElementSibling.value;
         let userPassword = event.target.parentNode.firstElementChild.nextElementSibling.nextElementSibling.value;
         postUser(userName, userUser, userPassword)
+        
         window.location.href='onboarding-3.html'; 
     })
 
@@ -33,3 +34,24 @@ window.addEventListener("load", () => {
         })
     })
 })
+
+const postUser = (userName, userUser, userPassword) => {
+
+    const update = {
+        userName: userName,
+        userUser: userUser,
+        userPassword: userPassword,
+    };
+
+    const options = {
+        method: 'POST',
+        headers: 
+            {
+                'Content-Type': 'application/json',
+            },
+        body: JSON.stringify(update),
+    };
+
+    // fetch(`http://localhost:3001/api/users/`, options)
+    fetch(`https://tasklist-backend-dtk7.onrender.com/api/users`, options)
+}
