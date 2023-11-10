@@ -1,4 +1,4 @@
-// import { postUser } from "./services/postUser.js";
+import { postUser } from "./services/postUser.js";
 import { getAllUsers } from "./services/getUsers.js";
 
 window.addEventListener("load", () => {
@@ -34,28 +34,3 @@ window.addEventListener("load", () => {
         })
     })
 })
-
-const postUser = (name, user, password) => {
-
-    const update = {
-        userName: name,
-        userUser: user,
-        userPassword: password,
-    };
-
-    const options = {
-        method: 'POST',
-        headers: 
-            {
-                'Content-Type' : 'application/json',
-            },
-        body: JSON.stringify(update),
-    };
-
-    // fetch(`http://localhost:3001/api/users/`, options)
-    fetch(`https://tasklist-backend-dtk7.onrender.com/api/users`, options)
-        .then(user => {
-            console.log(user);
-            ;
-        })
-}
