@@ -35,19 +35,19 @@ window.addEventListener("load", () => {
     })
 })
 
-const postUser = (userName, userUser, userPassword) => {
+const postUser = (name, user, password) => {
 
     const update = {
-        userName: userName,
-        userUser: userUser,
-        userPassword: userPassword,
+        userName: name,
+        userUser: user,
+        userPassword: password,
     };
 
     const options = {
         method: 'POST',
         headers: 
             {
-                'Content-Type': 'application/json',
+                'Content-Type' : 'application/json',
             },
         body: JSON.stringify(update),
     };
