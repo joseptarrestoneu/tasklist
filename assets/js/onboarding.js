@@ -27,9 +27,7 @@ window.addEventListener("load", () => {
                     window.location.href='principal.html';                  
                 }
             })
-            
         })
-       
     })
 })
 
